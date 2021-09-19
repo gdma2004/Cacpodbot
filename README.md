@@ -1,5 +1,5 @@
 # Cacpodbot
-Bot de Telegram desenvolvido na linguagem Python para auxiliar os cálculos das notas do Podion. 
+Bot de Telegram desenvolvido na linguagem Python para auxiliar nos cálculos das notas do Podion. 
 
 Link do bot: t.me/cacpodbot
     - Ou simplesmente procure "cacpodbot" no Telegram.
