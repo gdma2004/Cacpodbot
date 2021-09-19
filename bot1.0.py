@@ -6,7 +6,7 @@ import telebot
 from telebot.types import Message, MessageID
 import re
 
-bot = telebot.TeleBot('token')
+bot = telebot.TeleBot('Token')
 
 
 
@@ -20,14 +20,15 @@ def start(message):
 
 🔸 /dois - Calcular quanto precisa tirar na prova bimestral para ficar acima da média.
 
-🔸 /tres - Descobrir a nota final do bimestre.''')
+🔸 /tres - Descobrir a nota final do bimestre.
+
+🔸 /sobre - Exibir uma pequena descrição do programa.''')
 
 
 
 #seleção do menu 1
 @bot.message_handler(commands=['um'])
 def um(message):
-
     bot.send_message(message.chat.id, '🔴 Ok! Opção 1 selecionada: Vou te ajudar a calcular quanto tirar no 4° bimestre para passar de ano, beleza?')
     bot.send_message(message.chat.id, 'Quanto você tirou no 1°, 2° e 3° bimestres respectivamente? Separe as notas com "/" (0 - 10)')
     @bot.message_handler(func=lambda message: bool(re.search(r"\d+[,\.]?\d*/\d+[,\.]?\d*/\d+[,\.]?\d*", message.text)) == True)
@@ -51,33 +52,29 @@ Sendo essas as suas notas, você precisará de: {:.3f} no 4° Bimestre para pass
                 bot.send_message(message.chat.id, 'Digite valores válidos.')
         except (RuntimeError, TypeError, NameError, IndexError, BufferError, TabError, ValueError):
             bot.send_message(message.chat.id, 'Oops')   
-    
 
-
-#seleção do menu 2 (funcionando)
+#seleção do menu 2 
 @bot.message_handler(commands=['dois'])
 def dois(message):
-
     bot.send_message(message.chat.id, '🔴 Ok! Opção 2 selecionada: Vou te ajudar a calcular quanto tirar na prova bimestral para ficar acima da média, beleza?')
-    bot.send_message(message.chat.id, 'Quanto você tirou na prova Parcial? Escreva a nota entre ";" (0 - 10)')
-    
+    bot.send_message(message.chat.id, 'Quanto você tirou na prova parcial? Escreva a nota entre ";" (0 - 10)')
     @bot.message_handler(func=lambda message: bool(re.search(r";\d+[,\.]?\d*;", message.text)) == True)
     def echo_message(message):
         try:
             pp = str(message.text)
             pp_a = pp.replace(',','.')
             pp_a_a = pp_a.replace(';','')
-
             pp_a_float = float(pp_a_a)
-
             if pp_a_float >= 0 and pp_a_float <= 10:
                 pb = (6 - pp_a_float * 0.4) / 0.6
-                bot.send_message(message.chat.id, 'Você precisará tirar no mínimo {:.3f} na prova bimestral para ficar acima da média.'.format(pb))
+                bot.send_message(message.chat.id, '''
+👉 Sua nota na prova parcial = {:.3f}
+
+Sendo essa sua nota na prova parcial, você precisará tirar no mínimo {:.3f} na prova bimestral para ficar acima da média.'''.format(pp_a_float,pb))
             else:
                 bot.send_message(message.chat.id, 'Digite uma nota válida.')
         except (RuntimeError, TypeError, NameError, IndexError, BufferError, TabError, ValueError):
             bot.send_message(message.chat.id, 'Oops')
-
 
 
 #seleção do menu 3
@@ -85,7 +82,6 @@ def dois(message):
 def tres(message):
     bot.send_message(message.chat.id, '🔴 Ok! Opção 3 selecionada: Vou te ajudar a calcular sua nota final do bimestre, beleza?')
     bot.send_message(message.chat.id, 'Quanto você tirou na Prova Parcial e na Prova Bimestral respectivamente? Separe as notas com "/" (0 - 10)')
-    
     @bot.message_handler(func=lambda message: bool(re.search(r"\d+[,\.]?\d*/\d+[,\.]?\d*", message.text)) == True)
     def echo_message(message):
         try:
@@ -106,9 +102,7 @@ Sendo essas as sua notas, sua nota final do bimestre é de: {:.3f}'''.format(pp_
         except (RuntimeError, TypeError, NameError, IndexError, BufferError, TabError, ValueError):
             bot.send_message(message.chat.id, 'Oops')
 
-
-
-# about
+#sobre
 @bot.message_handler(commands=['sobre'])
 def start(message):
     bot.send_message(message.chat.id, '''Olá! Sou um bot de Telegram desenvolvido pelo @gdma2004 na linguagem "Python". Seus dados são confidenciais e o programa é código aberto. Caso queira acessar o repositório, o link está aqui embaixo!
@@ -120,3 +114,7 @@ def start(message):
 
 #loop
 bot.polling()
+
+
+
+
