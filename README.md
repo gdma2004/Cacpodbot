@@ -6,23 +6,18 @@ Link do bot: t.me/cacpodbot
 
 # Comandos:
 1) Comando "/start": Exibe o menu de opções
-    - Para selecioná-las, basta digitar o comando ou simplesmente clicar nas opções.
-      ![image](https://user-images.githubusercontent.com/63476124/133929409-95feff36-0185-4127-af03-5a967a341de2.png)
+    ![image](https://user-images.githubusercontent.com/63476124/134788878-8cc25abd-1e09-463a-899e-c7a80f0354b9.png)
 
 2) Comando "/um": Seleciona a opção 1 (calcular quanto tirar no 4° bimestre para passar de ano);
-    - Demonstração: 
-        Quanto você tirou no 1°, 2° e 3° bimestres respectivamente? Separe as notas com "/" (0 - 10)
-        - Exemplo de resposta desejada: 7,6/8/8,6
-    ![image](https://user-images.githubusercontent.com/63476124/133929451-79f9f304-7816-4f63-ad16-576cfa5a4db4.png)
+   ![image](https://user-images.githubusercontent.com/63476124/134788484-c7e0131f-f4d6-417c-899b-0fdbe0e9a716.png)
+
 
 3) Comando "/dois": Seleciona a opção 2 (calcular quanto precisa tirar na prova bimestral para ficar acima da média);
-    - Demonstração: 
-        Quanto você tirou na prova Parcial? Escreva a nota entre ";" (0 - 10)
-        - Exemplo de resposta desejada: ;7,6;
-    ![image](https://user-images.githubusercontent.com/63476124/133929487-2bfd9088-ab85-45e1-8c8c-f06713b4feb4.png)
+    ![image](https://user-images.githubusercontent.com/63476124/134788496-3c802760-066c-4271-92e9-5235ab0c9ec4.png)
 
 4) Comando "/tres": Seleciona a opção 3 (descobrir a nota final do bimestre).
-    - Demonstração: 
-        Quanto você tirou na Prova Parcial e na Prova Bimestral respectivamente? Separe as notas com "/" (0 - 10)
-        - Exemplo de resposta desejada: 8,4/8
-    ![image](https://user-images.githubusercontent.com/63476124/133929520-9cd5ce0f-1692-401d-bfeb-037442407d3d.png)
+    ![image](https://user-images.githubusercontent.com/63476124/134788843-2399da34-04af-4957-ab02-3a7692722869.png)
+    
+5) Comando "/quatro": Seleciona a opção 4 (descobrir quanto tirar na prova bimestral para cumprir uma meta).
+    ![image](https://user-images.githubusercontent.com/63476124/134788864-fb1e45d1-e45a-44bd-96d2-f5370e519841.png)
+
