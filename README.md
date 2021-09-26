@@ -5,6 +5,8 @@ Link do bot: t.me/cacpodbot
     - Ou simplesmente procure "cacpodbot" no Telegram.
 
 # Comandos:
+
+
 1) Comando "/start": Exibe o menu de opções
     ![image](https://user-images.githubusercontent.com/63476124/134788878-8cc25abd-1e09-463a-899e-c7a80f0354b9.png)
 
