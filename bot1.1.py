@@ -4,7 +4,7 @@ from telebot import types
 bot = telebot.TeleBot('Token')
 
 
-bot.send_message('admin_userid', '''🔸 BOT REINICIADO 🔸''')
+bot.send_message(adm_chat_id, '''🔸 BOT REINICIADO 🔸''')
 
 # Start
 @bot.message_handler(commands=['start'])
@@ -42,8 +42,9 @@ Ok! Opção 1 selecionada: Vou te ajudar a calcular quanto tirar no 4° bimestre
 (0 - 10)""")
         bot.register_next_step_handler(msg, process_primeiro_step)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
-
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 def process_primeiro_step(message):
     try:
         chat_id = message.chat.id
@@ -55,8 +56,9 @@ def process_primeiro_step(message):
 (0 - 10)''')
         bot.register_next_step_handler(msg, process_segundo_step)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
-
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 def process_segundo_step(message):
     try:
         chat_id = message.chat.id
@@ -68,7 +70,9 @@ def process_segundo_step(message):
 (0 - 10)''')
         bot.register_next_step_handler(msg, process_terceiro_step)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 
 def process_terceiro_step(message):
     try:
@@ -85,7 +89,9 @@ def process_terceiro_step(message):
 Se você ainda não tiver recebido, coloque "0".''')
         bot.register_next_step_handler(msg, process_simulado_step)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 
 def process_simulado_step(message):
     try:
@@ -97,18 +103,23 @@ def process_simulado_step(message):
                             
         if User.primeiro_a_float >= 0 and User.primeiro_a_float <= 10 and User.segundo_a_float >= 0 and User.segundo_a_float <= 10 and User.terceiro_a_float >= 0 and User.terceiro_a_float <= 10 and User.simulado_resposta_a_float >= 0  and User.simulado_resposta_a_float <= 1:
             b4s = (60-2*(User.primeiro_a_float)-2*(User.segundo_a_float)-3*(User.terceiro_a_float)-User.simulado_resposta_a_float)/3    
+            markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+            markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
             bot.send_message(message.chat.id, '''
 👉 Sua nota no 1° Bimestre = {:.3f}
 👉 Sua nota no 2° Bimestre = {:.3f}
 👉 Sua nota no 3° Bimestre = {:.3f}
 👉 Sua nota no Simulado = {:.3f}
 
-📗 Sendo essas as suas notas, você precisará de: {:.3f} no 4° Bimestre para passar de ano sem recuperação.'''.format(User.primeiro_a_float,User.segundo_a_float,User.terceiro_a_float,User.simulado_resposta_a_float,b4s))
+📗 Sendo essas as suas notas, você precisará de: {:.3f} no 4° Bimestre para passar de ano sem recuperação.'''.format(User.primeiro_a_float,User.segundo_a_float,User.terceiro_a_float,User.simulado_resposta_a_float,b4s), reply_markup=markup)
         else:
-            bot.send_message(message.chat.id, 'Digite valores válidos.')
+            markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+            markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+            bot.send_message(message.chat.id, 'Digite valores válidos.', reply_markup=markup)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
-
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 
         
 
@@ -128,7 +139,9 @@ Ok! Opção 2 selecionada: Vou te ajudar a calcular quanto tirar na prova bimest
 (0 - 10)""")
         bot.register_next_step_handler(msg, process_parcial2_step)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 
 def process_parcial2_step(message):
     try:
@@ -139,15 +152,18 @@ def process_parcial2_step(message):
         User.parcial2_a_float = float(User.parcial2_a)
         if User.parcial2_a_float >= 0 and User.parcial2_a_float <= 10:
             bimestral2 = (6 - User.parcial2_a_float * 0.4) / 0.6
+            markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+            markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
             bot.send_message(message.chat.id, '''
 👉 Sua nota na prova parcial = {:.3f}
 
-📗 Sendo essa sua nota na prova parcial, você precisará tirar no mínimo {:.3f} na prova bimestral para ficar acima da média.'''.format(User.parcial2_a_float, bimestral2))
+📗 Sendo essa sua nota na prova parcial, você precisará tirar no mínimo {:.3f} na prova bimestral para ficar acima da média.'''.format(User.parcial2_a_float, bimestral2), reply_markup=markup)
         else:
             bot.send_message(message.chat.id, 'Digite valores válidos.')
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
-
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 
 # Opção tres
 user3_dict = {}
@@ -165,7 +181,9 @@ Ok! Opção 3 selecionada: Vou te ajudar a calcular sua nota final do bimestre, 
 (0 - 10)""")
         bot.register_next_step_handler(msg, process_parcial_step)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 
 def process_parcial_step(message):
     try:
@@ -178,7 +196,9 @@ def process_parcial_step(message):
 (0 - 10)''')
         bot.register_next_step_handler(msg, process_bimestral_step)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 
 def process_bimestral_step(message):
     try:
@@ -189,16 +209,22 @@ def process_bimestral_step(message):
         User.bimestral_a_float = float(User.bimestral_a)
         if User.parcial_a_float >= 0 and User.parcial_a_float <=10 and User.bimestral_a_float >= 0 and User.bimestral_a_float <=10:
             nota_final = ((User.parcial_a_float*0.4) + (User.bimestral_a_float*0.6))
+            markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+            markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
             bot.send_message(message.chat.id, '''
 👉 Sua nota na P. Parcial = {:.3f}
 👉 Sua nota na P. Bimestral = {:.3f}
 
-📗 Sendo essas as sua notas, sua nota final do bimestre é de: {:.3f}'''.format(User.parcial_a_float,User.bimestral_a_float,nota_final))
+📗 Sendo essas as sua notas, sua nota final do bimestre é de: {:.3f}'''.format(User.parcial_a_float,User.bimestral_a_float,nota_final), reply_markup=markup)
         else:
-            bot.send_message(message.chat.id, 'Digite valores válidos.')
-    except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
+            markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+            markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+            bot.send_message(message.chat.id, 'Digite valores válidos.', reply_markup=markup)
 
+    except Exception as e:
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 
 
 # Opção 4
@@ -217,7 +243,9 @@ Ok! Opção 4 selecionada: Vou te ajudar a descobrir quanto tirar na prova bimes
 (0 - 10)""")
         bot.register_next_step_handler(msg, process_meta_step)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 
 def process_meta_step(message):
     try:
@@ -230,7 +258,9 @@ def process_meta_step(message):
 (0 - 10)''')
         bot.register_next_step_handler(msg, process_parcialb_step)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 
 def process_parcialb_step(message):
     try:
@@ -241,22 +271,30 @@ def process_parcialb_step(message):
         User.parcialb_a_float = float(User.parcialb_a)
         if User.parcialb_a_float >= 0 and User.parcialb_a_float <=10 and User.meta_a_float >= 0 and User.meta_a_float <=10:
             notadaprovabimestral = (User.meta_a_float - 0.4*(User.parcialb_a_float))/0.6
+            markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+            markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
             bot.send_message(message.chat.id, '''
 👉 Sua meta = {:.3f}
 👉 Sua nota na P. Parcial = {:.3f}
 
-📗 Sendo esse o seu objetivo, você deverá tirar: {:.3f} na prova bimestral.'''.format(User.meta_a_float,User.parcialb_a_float,notadaprovabimestral))
+📗 Sendo esse o seu objetivo, você deverá tirar: {:.3f} na prova bimestral.'''.format(User.meta_a_float,User.parcialb_a_float,notadaprovabimestral), reply_markup=markup)
         else:
-            bot.send_message(message.chat.id, 'Digite valores válidos.')
+            markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+            markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+            bot.send_message(message.chat.id, 'Digite valores válidos.', reply_markup=markup)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Oops 🥺')
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+        markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
+        bot.send_message(message.chat.id, 'Oops 🥺', reply_markup=markup)
 
 # About
 @bot.message_handler(commands=['sobre'])
 def sobre(message):
+    markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
+    markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
     bot.send_message(message.chat.id, '''Sou um bot de Telegram desenvolvido pelo @gdma2004 na linguagem "Python". Seus dados são confidenciais e o programa é código aberto. Caso queira acessar o repositório, o link está aqui embaixo!
 
-🔗 https://github.com/gdma2004/Cacpodbot''')
+🔗 https://github.com/gdma2004/Cacpodbot''', reply_markup=markup)
 
 
 
