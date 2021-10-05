@@ -1,10 +1,10 @@
 import telebot
 from telebot import types
 
-bot = telebot.TeleBot('Token')
+bot = telebot.TeleBot('token')
 
 
-bot.send_message(adm_chat_id, '''🔸 BOT REINICIADO 🔸''')
+bot.send_message(admin_user_id, '''🔸 BOT REINICIADO 🔸''')
 
 # Start
 @bot.message_handler(commands=['start'])
@@ -102,7 +102,7 @@ def process_simulado_step(message):
         User.simulado_resposta_a_float = float(User.simulado_resposta_a)
                             
         if User.primeiro_a_float >= 0 and User.primeiro_a_float <= 10 and User.segundo_a_float >= 0 and User.segundo_a_float <= 10 and User.terceiro_a_float >= 0 and User.terceiro_a_float <= 10 and User.simulado_resposta_a_float >= 0  and User.simulado_resposta_a_float <= 1:
-            b4s = (60-2*(User.primeiro_a_float)-2*(User.segundo_a_float)-3*(User.terceiro_a_float)-User.simulado_resposta_a_float)/3    
+            b4s = (60 - 10*User.simulado_resposta_a_float - 2*User.primeiro_a_float - 2*User.segundo_a_float - 3*User.terceiro_a_float)/3   
             markup = types.ReplyKeyboardMarkup(one_time_keyboard=False)
             markup.add('/start','/um', '/dois', '/tres', '/quatro', '/sobre')
             bot.send_message(message.chat.id, '''
