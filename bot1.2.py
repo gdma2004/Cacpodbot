@@ -20,7 +20,10 @@ def start(message):
 🔸 /tres - Descobrir a nota final do bimestre
 
 🔸 /quatro - Descobrir quanto tirar na prova bimestral para cumprir uma meta''', reply_markup=markup)
-
+    if message.chat.id != admin_user_id:
+        bot.send_message(admin_user_id, 'Há uma pessoa usando o bot: {}'.format(message.chat.first_name))
+    else:
+        print('Adm está a usar o bot.')
 
 
 
