@@ -1,10 +1,13 @@
 import telebot
 from telebot import types
+import os
 
-bot = telebot.TeleBot('token')
+
+token = os.getenv('TELEBOTTOKEN')
+bot = telebot.TeleBot(token)
 
 
-bot.send_message(admin_user_id, '''🔸 BOT REINICIADO 🔸''')
+bot.send_message(1469532071, '''🔸 BOT REINICIADO 🔸''')
 
 # Start
 @bot.message_handler(commands=['start'])
@@ -20,8 +23,8 @@ def start(message):
 🔸 /tres - Descobrir a nota final do bimestre
 
 🔸 /quatro - Descobrir quanto tirar na prova bimestral para cumprir uma meta''', reply_markup=markup)
-    if message.chat.id != admin_user_id:
-        bot.send_message(admin_user_id, 'Há uma pessoa usando o bot: {}'.format(message.chat.first_name))
+    if message.chat.id != 1469532071:
+        bot.send_message(1469532071, 'Há uma pessoa usando o bot: {}'.format(message.chat.first_name))
     else:
         print('Adm está a usar o bot.')
 
