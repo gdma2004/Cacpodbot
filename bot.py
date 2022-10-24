@@ -34,7 +34,7 @@ from typing import TextIO
 # API TOKEN/ENVIAR AO HOST QUE O BOT FOI RECONECTADO
 
 bot = telebot.TeleBot(api_token)
-bot.send_message(1469532071, 'Bot reiniciado.')
+bot.send_message(5014728793, 'Bot reiniciado.')
 
 
 
